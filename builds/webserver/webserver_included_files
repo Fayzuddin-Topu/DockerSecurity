@@ -1,0 +1,5 @@
+/etc/nginx/nginx.conf
+/etc/php.ini
+/etc/php-fpm.d/www.conf
+/etc/nginx/conf.d/php-fpm.conf
+/usr/share/nginx/html
