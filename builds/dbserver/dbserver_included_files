@@ -1,0 +1,5 @@
+/mysql/mysql.conf.d/mysqld.cnf
+/etc/mysql/conf.d/
+/run/mysqld
+/docker-entrypoint-initdb.d/
+/var/lib/mysql
