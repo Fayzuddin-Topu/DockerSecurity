@@ -1,0 +1,24 @@
+policy_module(docker_dbserver,0.2)
+
+virt_sandbox_domain_template(docker_dbserver);
+
+################# put audit2allow rules in here ##############
+require {
+	type container_runtime_t;
+	type mysqld_port_t;
+	type docker_dbserver_t;
+	type node_t;
+	class tcp_socket { accept bind create getattr listen name_bind node_bind read setopt write };
+	class process2 nnp_transition;
+
+}
+
+#============= docker_dbserver_t ==============
+allow container_runtime_t docker_dbserver_t:process2 nnp_transition;
+allow docker_dbserver_t mysqld_port_t:tcp_socket name_bind;
+allow docker_dbserver_t node_t:tcp_socket node_bind;
+allow docker_dbserver_t self:tcp_socket { accept bind create getattr listen read setopt write };
+
+################# end audit2allow additions ##################
+
+
